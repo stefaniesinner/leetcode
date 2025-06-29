@@ -1,5 +1,7 @@
 package twoSum;
 
+import java.util.Arrays;
+
 /**
  * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to
  * target. You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -44,6 +46,10 @@ public class Solution {
         int[] nums3 = {3, 3};
         int target3 = 6;
         int[] solution3 = twoSum(nums3, target3);
+
+        System.out.println(Arrays.toString(solution1));
+        System.out.println(Arrays.toString(solution2));
+        System.out.println(Arrays.toString(solution3));
     }
 
     public static int[] twoSum(int[] nums, int target) {
