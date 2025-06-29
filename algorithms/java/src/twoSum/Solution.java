@@ -30,7 +30,20 @@ package twoSum;
 public class Solution {
 
     public static void main(String[] args) {
+        // Set up example 1
+        int[] nums1 = {2, 7, 11, 15};
+        int target1 = 9;
+        int[] solution1 = twoSum(nums1, target1);
 
+        // Set up example 2
+        int[] nums2 = {3, 2, 4};
+        int target2 = 6;
+        int[] solution2 = twoSum(nums2, target2);
+
+        // Set up example 3
+        int[] nums3 = {3, 3};
+        int target3 = 6;
+        int[] solution3 = twoSum(nums3, target3);
     }
 
     public static int[] twoSum(int[] nums, int target) {
