@@ -29,7 +29,11 @@ package twoSum;
  */
 public class Solution {
 
-    public int[] twoSum(int[] nums, int target) {
+    public static void main(String[] args) {
+
+    }
+
+    public static int[] twoSum(int[] nums, int target) {
         return nums;
     }
 }
