@@ -63,7 +63,7 @@ public class Solution {
                     break;
                 }
                 if (nums[i] + nums[j] == target) {
-                    return new int[]{i, j};
+                    return new int[]{j, i};
                 }
             }
         }
