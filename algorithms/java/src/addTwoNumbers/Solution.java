@@ -41,9 +41,18 @@ import java.util.Collections;
 public class Solution {
 
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(0);
+        ListNode l1 = new ListNode(9);
 
-        ListNode l2 = new ListNode(0);
+        ListNode l2 = new ListNode(1);
+        l2.next = new ListNode(9);
+        l2.next.next = new ListNode(9);
+        l2.next.next.next = new ListNode(9);
+        l2.next.next.next.next = new ListNode(9);
+        l2.next.next.next.next.next = new ListNode(9);
+        l2.next.next.next.next.next.next = new ListNode(9);
+        l2.next.next.next.next.next.next.next = new ListNode(9);
+        l2.next.next.next.next.next.next.next.next = new ListNode(9);
+        l2.next.next.next.next.next.next.next.next.next = new ListNode(9);
 
         ListNode result = new Solution().addTwoNumbers(l1, l2);
         System.out.println(result);
@@ -51,12 +60,12 @@ public class Solution {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ArrayList<Integer> list1 = reverseList(l1);
-        int num1 = listToInt(list1);
+        long num1 = listToLong(list1);
 
         ArrayList<Integer> list2 = reverseList(l2);
-        int num2 = listToInt(list2);
+        long num2 = listToLong(list2);
 
-        int sum = num1 + num2;
+        long sum = num1 + num2;
 
         ListNode result = null;
         ListNode current = null;
@@ -66,7 +75,7 @@ public class Solution {
         }
 
         while (sum > 0) {
-            int num = sum % 10;
+            int num = (int) (sum % 10);
 
             if (result == null) {
                 // first node
@@ -95,11 +104,11 @@ public class Solution {
         return result;
     }
 
-    private int listToInt(ArrayList<Integer> list) {
-        int result = 0;
+    private long listToLong(ArrayList<Integer> list) {
+        long result = 0;
 
-        for (int i = 0; i < list.size(); i++) {
-            result = result * 10 + list.get(i);
+        for (Integer integer : list) {
+            result = result * 10 + integer;
         }
 
         return result;
