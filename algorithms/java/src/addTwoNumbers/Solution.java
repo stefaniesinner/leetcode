@@ -41,30 +41,67 @@ import java.util.Collections;
 public class Solution {
 
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(2);
-        l1.next = new ListNode(4);
-        l1.next.next = new ListNode(3);
+        ListNode l1 = new ListNode(0);
 
-        ListNode l2 = new ListNode(5);
-        l2.next = new ListNode(6);
-        l2.next.next = new ListNode(4);
+        ListNode l2 = new ListNode(0);
 
         ListNode result = new Solution().addTwoNumbers(l1, l2);
         System.out.println(result);
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ArrayList<Integer> list1 = new ArrayList<>();
+        ArrayList<Integer> list1 = reverseList(l1);
+        int num1 = listToInt(list1);
 
-        while (l1 != null) {
-            System.out.println(l1.val);
-            list1.add(l1.val);
-            l1 = l1.next;
+        ArrayList<Integer> list2 = reverseList(l2);
+        int num2 = listToInt(list2);
+
+        int sum = num1 + num2;
+
+        ListNode result = null;
+        ListNode current = null;
+
+        if (sum == 0) {
+            result = new ListNode(0);
         }
 
-        Collections.reverse(list1);
-        System.out.println(list1);
+        while (sum > 0) {
+            int num = sum % 10;
 
-        return l1;
+            if (result == null) {
+                // first node
+                result = new ListNode(num);
+                current = result;
+            } else {
+                // other nodes
+                current.next = new ListNode(num);
+                current = current.next;
+            }
+            sum = sum / 10;
+        }
+
+        return result;
+    }
+
+    private ArrayList<Integer> reverseList(ListNode list) {
+        ArrayList<Integer> result = new ArrayList<>();
+
+        while (list != null) {
+            result.add(list.val);
+            list = list.next;
+        }
+
+        Collections.reverse(result);
+        return result;
+    }
+
+    private int listToInt(ArrayList<Integer> list) {
+        int result = 0;
+
+        for (int i = 0; i < list.size(); i++) {
+            result = result * 10 + list.get(i);
+        }
+
+        return result;
     }
 }
