@@ -1,5 +1,6 @@
 package addTwoNumbers;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -60,22 +61,22 @@ public class Solution {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ArrayList<Integer> list1 = reverseList(l1);
-        long num1 = listToLong(list1);
+        BigInteger num1 = listToBigInteger(list1);
 
         ArrayList<Integer> list2 = reverseList(l2);
-        long num2 = listToLong(list2);
+        BigInteger num2 = listToBigInteger(list2);
 
-        long sum = num1 + num2;
+        BigInteger sum = num1.add(num2);
 
         ListNode result = null;
         ListNode current = null;
 
-        if (sum == 0) {
+        if (sum.equals(BigInteger.ZERO)) {
             result = new ListNode(0);
         }
 
-        while (sum > 0) {
-            int num = (int) (sum % 10);
+        while (sum.compareTo(BigInteger.ZERO) > 0) {
+            int num = sum.mod(BigInteger.TEN).intValue();
 
             if (result == null) {
                 // first node
@@ -83,10 +84,11 @@ public class Solution {
                 current = result;
             } else {
                 // other nodes
+                assert current != null;
                 current.next = new ListNode(num);
                 current = current.next;
             }
-            sum = sum / 10;
+            sum = sum.divide(BigInteger.TEN);
         }
 
         return result;
@@ -104,11 +106,11 @@ public class Solution {
         return result;
     }
 
-    private long listToLong(ArrayList<Integer> list) {
-        long result = 0;
+    private BigInteger listToBigInteger(ArrayList<Integer> list) {
+        BigInteger result = BigInteger.ZERO;
 
         for (Integer integer : list) {
-            result = result * 10 + integer;
+            result = result.multiply(BigInteger.TEN).add(BigInteger.valueOf(integer));
         }
 
         return result;
